@@ -1,73 +1,16 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import  Header  from "@/components/header";
+import Feature from "@/components/feature";
+import Hero from "@/components/hero";
 export default function LandingPage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen ">
       {/* Header */}
-      <header className="px-4 lg:px-6 h-14 flex items-center justify-between">
-        <Link href="#" className="flex items-center">
-          <span className="sr-only">EduTech Pro</span>
-          <svg
-            className="h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-            <path d="M6 12v5c3 3 9 3 12 0v-5" />
-          </svg>
-        </Link>
-        {/* Hamburger Menu for smaller screens */}
-        <div className="sm:hidden">
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="focus:outline-none"
-          >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d={
-                  isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"
-                }
-              />
-            </svg>
-          </button>
-        </div>
-        {/* Menu with flex-col and gap on small screens */}
-        <nav
-          className={`sm:flex ${
-            isMenuOpen
-              ? "absolute top-0 left-[70%] flex flex-col gap-4 mt-4"
-              : "hidden"
-          } sm:gap-6`}
-        >
-          {["Features", "How It Works", "Pricing", "Contact"].map((item) => (
-            <Link
-              href={`#${item.toLowerCase().replace(" ", "-")}`}
-              key={item}
-              className="text-sm font-medium hover:underline underline-offset-4"
-            >
-              {item}
-            </Link>
-          ))}
-        </nav>
-      </header>
-
+     <Header/>
       <main className="flex-1">
         <section className="w-full h-screen md:h-screen flex items-center justify-center py-12 md:py-24 lg:py-32 xl:py-48  ">
           <div className="container px-4 md:px-6">
@@ -88,53 +31,8 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
-        <section
-          id="features"
-          className="w-full  md:h-screen	flex items-center justify-center py-12 md:py-24 lg:py-32 xl:py-48 bg-gray-100 dark:bg-gray-800"
-        >
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">
-              Product Features
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "Interactive Lessons",
-                  description: "Create engaging, multimedia-rich lessons",
-                },
-                {
-                  title: "Automated Grading",
-                  description: "Save time with AI-powered grading assistance",
-                },
-                {
-                  title: "Progress Tracking",
-                  description: "Monitor student progress in real-time",
-                },
-                {
-                  title: "Communication Tools",
-                  description: "Stay connected with students and parents",
-                },
-                {
-                  title: "Resource Library",
-                  description: "Access a vast library of educational resources",
-                },
-                {
-                  title: "Customizable Reports",
-                  description: "Generate insightful reports with ease",
-                },
-              ].map((feature, index) => (
-                <Card key={index}>
-                  <CardHeader>
-                    <CardTitle>{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p>{feature.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        <Hero/>
+        <Feature/>
         <section
           id="how-it-works"
           className="w-full md:h-screen flex items-center justify-center py-12 md:py-24 lg:py-32 xl:py-48"
